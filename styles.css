@@ -1673,3 +1673,48 @@ html[data-lang="ka"] .langsw:hover .langsw__globe { color: #fff; }
 .hstep__card h4 {
   font-family: var(--f-text);
 }
+
+/* ============================================================
+   Our Clients — infinite logo marquee
+   ============================================================ */
+#clients .clients__head { text-align: center; margin-bottom: clamp(26px, 4vw, 42px); }
+#clients .clients__head h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); letter-spacing: -0.5px; }
+.cmarquee {
+  position: relative;
+  overflow: hidden;
+  padding: 6px 0;
+  /* fade both edges so logos scroll in/out softly */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.cmarquee__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: cmarquee 34s linear infinite;
+}
+.cmarquee:hover .cmarquee__track { animation-play-state: paused; }
+.clogo {
+  flex: none;
+  padding: 0 clamp(22px, 3.6vw, 48px);
+  font-family: var(--f-sans);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 2.4vw, 1.75rem);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: var(--n-400);
+  transition: color var(--t-btn) var(--ease), transform var(--t-btn) var(--ease);
+}
+.clogo:hover { color: var(--ink); transform: translateY(-1px); }
+/* real logo images: uniform height, greyscale so they sit with the wordmarks; colour on hover */
+.clogo--img { display: inline-flex; align-items: center; }
+.clogo--img img {
+  display: block; width: auto; height: clamp(26px, 4.2vw, 38px);
+  filter: grayscale(1); opacity: 0.6;
+  transition: filter var(--t-btn) var(--ease), opacity var(--t-btn) var(--ease);
+}
+.clogo--img:hover img { filter: none; opacity: 1; }
+@keyframes cmarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .cmarquee__track { animation: none; flex-wrap: wrap; justify-content: center; row-gap: 18px; }
+}
