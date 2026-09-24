@@ -859,7 +859,7 @@ button { font: inherit; cursor: pointer; }
 .bento__viz { position: relative; flex: 1 1 auto; margin-top: 14px; }
 
 /* placement (12-col, 2-row) */
-.bento__intro    { grid-column: 1 / 5;   grid-row: 1 / 3; padding: 0; justify-content: space-between; background: var(--brand); }
+.bento__intro    { grid-column: 1 / 5;   grid-row: 1 / 3; padding: 0; justify-content: space-between; background: var(--n-950); }  /* black: the guideline's blue / black alternation against the navy "why" panel above */
 .bento__warranty { grid-column: 5 / 8;   grid-row: 1; }
 .bento__delivery { grid-column: 8 / 13;  grid-row: 1; }
 .bento__support  { grid-column: 5 / 10;  grid-row: 2; }
