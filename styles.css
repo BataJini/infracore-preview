@@ -5,74 +5,25 @@
    brand. Tokens measured from synthai.demos.tailgrids.com.
    ============================================================ */
 
-@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
-
-/* Georgian display/text typeface — Eurostile GEO_Nus (typeface.ge).
-   Covers Latin + Georgian, so it can drive the whole site.
-   Weight ranges map the family's faces onto the weights the design uses
-   (400 regular · 500–600 demi · 700 bold · 800–900 black). */
+/* ============================================================
+   Brand typography — Infracore Brand Guidelines
+   Primary   Helvetica Neue (Bold headline · Regular subhead · Light body)
+             via the system stack "Helvetica Neue" → Helvetica → Arial
+             (Helvetica Neue is a licensed font: not embedded, used where installed).
+   Secondary Geist Mono (eyebrows, labels, buttons, numerals) — self-hosted, OFL.
+   Georgian  BPG Banner SuperSquare (typeface.ge) — self-hosted; drives the whole
+             page in KA mode. Geist Mono keeps Latin/digits inside labels and
+             falls through per-glyph to BPG for Georgian letters.
+   ============================================================ */
 @font-face {
-  font-family: "Eurostile GEO_Nus";
-  src: url("assets/fonts/eurostile-geo-nus-regular.ttf") format("truetype");
+  font-family: "Geist Mono";
+  src: url("assets/fonts/geist-mono-variable.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "BPG Banner SuperSquare";
+  src: url("assets/fonts/bpg-banner-supersquare.woff2") format("woff2");
   font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "Eurostile GEO_Nus";
-  src: url("assets/fonts/eurostile-geo-nus-italic.ttf") format("truetype");
-  font-weight: 400; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: "Eurostile GEO_Nus";
-  src: url("assets/fonts/eurostile-geo-nus-demi.ttf") format("truetype");
-  font-weight: 500 600; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "Eurostile GEO_Nus";
-  src: url("assets/fonts/eurostile-geo-nus-demi-italic.ttf") format("truetype");
-  font-weight: 500 600; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: "Eurostile GEO_Nus";
-  src: url("assets/fonts/eurostile-geo-nus-bold.ttf") format("truetype");
-  font-weight: 700; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "Eurostile GEO_Nus";
-  src: url("assets/fonts/eurostile-geo-nus-bold-italic.ttf") format("truetype");
-  font-weight: 700; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: "Eurostile GEO_Nus";
-  src: url("assets/fonts/eurostile-geo-nus-black.ttf") format("truetype");
-  font-weight: 800 900; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "Eurostile GEO_Nus";
-  src: url("assets/fonts/eurostile-geo-nus-black-italic.ttf") format("truetype");
-  font-weight: 800 900; font-style: italic; font-display: swap;
-}
-
-/* Georgian TEXT typeface — Mersad (typeface.ge). Used for body/description copy
-   and the header nav (NOT headings, NOT the "მოითხოვე შეთავაზება" CTA). */
-@font-face {
-  font-family: "Mersad";
-  src: url("assets/fonts/mersad-regular.otf") format("opentype");
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "Mersad";
-  src: url("assets/fonts/mersad-medium.otf") format("opentype");
-  font-weight: 500; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "Mersad";
-  src: url("assets/fonts/mersad-semibold.otf") format("opentype");
-  font-weight: 600; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "Mersad";
-  src: url("assets/fonts/mersad-bold.otf") format("opentype");
-  font-weight: 700; font-style: normal; font-display: swap;
 }
 
 :root {
@@ -89,24 +40,32 @@
   --white: #ffffff;
   --black: #000000;
 
-  /* Soft pastel accents (section/card tints) */
-  --soft-green:  #edf4ea;
-  --soft-purple: #ebebfc;
-  --soft-pink:   #f7eff7;
-  --soft-blue:   #eaf0f7;
+  /* Brand palette — Infracore Brand Guidelines, applied as TONED screen variants.
+     Client feedback (Sept 2026): the pure #00007B / #8FE9FA read too harsh on screen and the
+     page had too much white. The guideline hexes remain the print/logo reference; these are the
+     on-screen tones (same hue family, a touch less saturated). Change --brand / --cyan to retune. */
+  --brand:     #273c91;   /* Deep Blue, toned royal navy — key backgrounds, brand-led surfaces, CTAs  (guideline #00007B) */
+  --brand-800: #1a2b70;   /* darker step (gradients, hovers) */
+  --brand-600: #3b52b0;   /* lighter step (gradients, glows) */
+  --brand-300: #a9b1d3;   /* Deep Blue 40% tint */
+  --brand-100: #e9ecf4;   /* Deep Blue 10% tint (light surfaces) */
+  --cyan:      #b9e0f4;   /* Light Cyan, toned pastel sky — hero, product banners, highlights on dark  (guideline #8FE9FA) */
+  --cyan-100:  #eef7fc;   /* Light Cyan tint (light surfaces) */
+  --canvas:    #d2e6ef;   /* page canvas: cool ice-blue paper — the site's base colour is no longer white */
+  --surface:   #e8f1f7;   /* section panels: one step lighter than the canvas; pure white is kept for cards/inputs */
+  --on-cyan:   var(--brand);                /* headings / tags on Light Cyan surfaces (blue + cyan pairing) */
+  --on-cyan-muted: rgba(39, 60, 145, 0.80); /* body copy on Light Cyan surfaces */
 
   /* Roles */
-  --page-bg: var(--white);
+  --page-bg: var(--canvas);
   --ink: var(--n-900);
   --muted: var(--n-500);
   --line: var(--n-200);
 
-  /* Type */
-  --f-sans: "Eurostile GEO_Nus", "Figtree", system-ui, sans-serif;   /* headings (display) */
-  --f-text: "Mersad", "Eurostile GEO_Nus", "Figtree", system-ui, sans-serif;  /* body / descriptions + header nav */
-  /* Latin/digits keep the Space Mono "signature"; Georgian glyphs (absent in
-     Space Mono) fall through per-glyph to Eurostile GEO_Nus. */
-  --f-mono: "Space Mono", "Eurostile GEO_Nus", ui-monospace, monospace;
+  /* Type — see the brand typography note above */
+  --f-sans: "Helvetica Neue", Helvetica, Arial, "BPG Banner SuperSquare", sans-serif;   /* headings */
+  --f-text: "Helvetica Neue", Helvetica, Arial, "BPG Banner SuperSquare", sans-serif;   /* body / nav */
+  --f-mono: "Geist Mono", "BPG Banner SuperSquare", ui-monospace, monospace;          /* labels / buttons */
 
   /* Shape */
   --r-md: 0.375rem;
@@ -130,6 +89,21 @@
   --gap: 0.75rem;     /* gap between section cards */
 }
 
+/* Georgian mode — BPG Banner SuperSquare drives the page. The family ships one
+   weight, so synthetic bold is off (hierarchy comes from size + colour) and the
+   tight Latin display tracking is relaxed for the wide Georgian letterforms. */
+html[lang="ka"] {
+  --f-sans: "BPG Banner SuperSquare", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --f-text: "BPG Banner SuperSquare", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+}
+html[lang="ka"] h1, html[lang="ka"] h2, html[lang="ka"] h3, html[lang="ka"] h4 { letter-spacing: 0; }
+/* desktop: the wide Georgian face needs a touch more measure + a slightly smaller size
+   so the hero headline stays at ~5 lines */
+@media (min-width: 981px) {
+  html[lang="ka"] .hero h1 { max-width: 17ch; font-size: clamp(2rem, 4.2vw, 3rem); }
+}
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -138,7 +112,7 @@ body {
   margin: 0;
   background: var(--page-bg);
   color: var(--ink);
-  font-family: var(--f-text);     /* body / descriptions → Mersad (headings override to --f-sans) */
+  font-family: var(--f-text);     /* Helvetica Neue stack (BPG Banner SuperSquare in Georgian mode) */
   font-size: 16px;
   line-height: 1.6;
   font-weight: 400;
@@ -150,9 +124,9 @@ body {
 h1, h2, h3, h4 {
   margin: 0;
   font-family: var(--f-sans);
-  font-weight: 500;               /* SIGNATURE: medium-weight large headings */
+  font-weight: 700;               /* Helvetica Neue Bold headlines (brand guidelines) */
   line-height: 1.1;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
 
@@ -162,7 +136,7 @@ img, svg { display: block; max-width: 100%; }
 ul { margin: 0; padding: 0; list-style: none; }
 button { font: inherit; cursor: pointer; }
 
-/* Eyebrow label — SIGNATURE: Space Mono, uppercase, tracked */
+/* Eyebrow label — Geist Mono, uppercase, tracked */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -172,7 +146,7 @@ button { font: inherit; cursor: pointer; }
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--n-500);
+  color: var(--brand);
 }
 .eyebrow::before {
   content: "";
@@ -189,9 +163,9 @@ button { font: inherit; cursor: pointer; }
   padding-inline: clamp(20px, 4vw, 40px);
 }
 
-/* ---- Section card: white, rounded, floating on the gray page ---- */
+/* ---- Section card: light ice panel, rounded, floating on the deeper ice canvas ---- */
 .section {
-  background: #f0f0f0;
+  background: var(--surface);
   border-radius: var(--r-xl);   /* match the hero frame's corner radius */
   padding-block: clamp(48px, 8vw, 100px);
   margin-bottom: var(--gap);
@@ -205,7 +179,7 @@ button { font: inherit; cursor: pointer; }
 .ctabox__main p { margin-top: 12px; color: var(--muted); font-size: 0.98rem; max-width: 44ch; }
 .ctabox__list { display: flex; flex-direction: column; gap: 13px; }
 .ctabox__list li { display: flex; align-items: center; gap: 13px; font-size: 0.97rem; font-weight: 500; color: var(--ink); }
-.ctabox__ic { display: inline-flex; width: 26px; height: 26px; flex: none; align-items: center; justify-content: center; border-radius: 50%; background: var(--soft-green); color: #0b6854; }
+.ctabox__ic { display: inline-flex; width: 26px; height: 26px; flex: none; align-items: center; justify-content: center; border-radius: 50%; background: var(--brand-100); color: var(--brand); }
 .ctabox__ic svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 @media (min-width: 820px) {
   .ctabox { flex-direction: row; align-items: center; justify-content: space-between; gap: 56px; }
@@ -225,17 +199,17 @@ button { font: inherit; cursor: pointer; }
   padding: 0 22px;
   border: 1px solid transparent;
   border-radius: var(--r-lg);            /* 8px rectangles, NOT pills */
-  font-family: var(--f-mono);            /* SIGNATURE: Space Mono buttons */
+  font-family: var(--f-mono);            /* Geist Mono buttons */
   font-size: 0.875rem;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   transition: background-color var(--t-btn) var(--ease), color var(--t-btn) var(--ease), border-color var(--t-btn) var(--ease);
 }
-.btn--primary { background: var(--n-950); color: #fff; }
-.btn--primary:hover { background: var(--n-700); }
-.btn--light { background: #fff; color: var(--n-900); border: 1px solid var(--n-900); }
-.btn--light:hover { background: var(--n-100); }
+.btn--primary { background: var(--brand); color: #fff; }
+.btn--primary:hover { background: var(--brand-800); }
+.btn--light { background: #fff; color: var(--brand); border: 1px solid var(--brand); }
+.btn--light:hover { background: var(--brand-100); }
 .btn--ghost { background: transparent; color: var(--n-900); }
 .btn--ghost:hover { background: var(--n-100); }
 .btn--sm { min-height: 44px; padding: 0 18px; font-size: 0.8rem; }
@@ -314,11 +288,11 @@ button { font: inherit; cursor: pointer; }
     margin-right: 0;
   }
 }
-.logo { display: inline-flex; align-items: center; gap: 9px; font-weight: 600; font-size: 1.15rem; }
-.logo__dot { width: 26px; height: 26px; border-radius: 8px; background: var(--n-950); display: inline-grid; place-items: center; color: #fff; font-family: var(--f-mono); font-size: 0.9rem; }
-.logo__mark { height: 30px; display: inline-flex; align-items: center; flex: none; }
-.logo__mark img { height: 100%; width: auto; display: block; }
-.site-head .logo__mark img { filter: none; }   /* brand colours (green) like the footer mark */
+/* Brand lockup (symbol + INFRACORE wordmark) from the inline SVG sprite; coloured via currentColor.
+   Black over the Light Cyan hero at the top, white on the black island once scrolled. */
+.logo { display: inline-flex; align-items: center; color: var(--black); }
+.site-head.is-scrolled .logo { color: #fff; }
+.logo__svg { display: block; height: 28px; width: 114px; color: inherit; }
 /* Desktop nav: plain inline links (no pill frame), dark text — like SynthAI.
    Pushed to the right, next to the CTA button. */
 .nav {
@@ -330,13 +304,15 @@ button { font: inherit; cursor: pointer; }
 .nav a {
   padding: 8px 14px;
   border-radius: var(--r-lg);
-  font-family: var(--f-text);     /* header nav → Mersad (CTA button keeps --f-mono) */
+  font-family: var(--f-text);     /* header nav (CTA button keeps --f-mono) */
   font-size: 0.85rem;
   letter-spacing: 0.01em;
-  color: var(--n-900);
+  color: rgba(26, 43, 112, 0.88);
   transition: background-color 0.2s var(--ease), color 0.5s var(--ease);
 }
-.nav a:hover { background: var(--n-100); color: var(--n-950); }
+.nav a:hover { background: rgba(39, 60, 145, 0.08); color: var(--brand); }
+.site-head.is-scrolled .nav a { color: rgba(255, 255, 255, 0.86); }
+.site-head.is-scrolled .nav a:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
 .head__actions { display: flex; align-items: center; gap: 10px; }
 .navtoggle { display: none; width: 44px; height: 44px; border: 0; background: transparent; flex-direction: column; gap: 5px; align-items: center; justify-content: center; }
 .navtoggle span { width: 22px; height: 2px; background: var(--n-900); border-radius: 2px; }
@@ -348,8 +324,8 @@ button { font: inherit; cursor: pointer; }
   position: relative;
   overflow: hidden;
   border-radius: var(--r-xl);
-  background: #0a0a0a;
-  color: #fff;
+  background: var(--cyan);
+  color: var(--black);
   isolation: isolate;
   padding: clamp(104px, 11vw, 150px) 0 clamp(40px, 6vw, 90px);
   margin-bottom: var(--gap);
@@ -357,26 +333,16 @@ button { font: inherit; cursor: pointer; }
   display: grid;
   align-items: center;
 }
-/* Green aurora glow on the dark hero (animated, breathing) */
+/* Flat Light Cyan hero banner: a faint white lift at the top and a soft Deep Blue
+   cast toward the symbol / bottom edge for depth — no blur filters, no motion. */
 .hero > .container { position: relative; z-index: 1; }
 .hero::before {
   content: "";
-  position: absolute; inset: -12%; z-index: 0; pointer-events: none;
-  transform-origin: 50% 92%;
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background:
-    radial-gradient(62% 52% at 50% 104%, rgba(52, 232, 158, 0.45), transparent 72%),
-    radial-gradient(48% 44% at 24% 100%, rgba(28, 170, 128, 0.36), transparent 72%),
-    radial-gradient(48% 44% at 78% 100%, rgba(80, 205, 230, 0.26), transparent 72%),
-    radial-gradient(42% 40% at 62% 100%, rgba(150, 245, 180, 0.24), transparent 72%),
-    radial-gradient(55% 28% at 50% -4%, rgba(46, 220, 150, 0.16), transparent 70%);
-  filter: blur(14px) saturate(1.05);
-  /* entrance only — the infinite scale "breath" re-rasterized the 14px blur every frame
-     (constant GPU cost even when idle); the static glow looks identical at rest. */
-  animation: auroraIn 2s ease-out both;
+    radial-gradient(60% 70% at 88% 60%, rgba(39, 60, 145, 0.10), transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 45%, rgba(39, 60, 145, 0.10) 100%);
 }
-@keyframes auroraIn { from { opacity: 0; transform: scale(1.35); } to { opacity: 1; transform: scale(1); } }
-@keyframes auroraBreath { from { transform: scale(1); } to { transform: scale(1.08); } }
-@media (prefers-reduced-motion: reduce) { .hero::before { animation: none; opacity: 1; } }
 .hero__grid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -386,7 +352,7 @@ button { font: inherit; cursor: pointer; }
 .hero h1 {
   font-size: clamp(2.1rem, 4.6vw, 3.25rem);   /* a bit smaller per request */
   line-height: 1.18;                           /* a bit more breathing room between lines */
-  letter-spacing: -2px;            /* SIGNATURE: tight display tracking */
+  letter-spacing: -0.02em;         /* Helvetica Neue Bold: slightly tight display tracking */
   margin-top: 22px;
   max-width: 14ch;
   text-wrap: balance;              /* even out the line lengths */
@@ -400,47 +366,38 @@ button { font: inherit; cursor: pointer; }
 }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 
-/* Hero visual — full-bleed 3D logo render, anchored right, spilling off the edge.
-   No glow, no motion: just the static render clipped by the hero's rounded edge. */
+/* Hero visual — the brand symbol in Deep Blue, oversized, bleeding off the
+   bottom-right edge (brand-guideline social layouts) and turning very slowly.
+   Only opacity / scale / rotate are animated (compositor-friendly). */
 .hero__visual { aspect-ratio: 1 / 1; }
-.hero__art {
+.hero__sym {
   position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  height: 112%;
-  width: auto;
-  max-width: none;
+  left: 54%; bottom: -18%;
+  height: 104%; width: auto; max-width: none;
+  color: var(--brand);
   z-index: 0;
   pointer-events: none;
+  animation: heroSymIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) both, heroSymSpin 140s linear infinite;
 }
-/* phone-only hero render (upright, not rotated) — hidden on desktop */
-.hero__artm { display: none; }
+@keyframes heroSymIn { from { opacity: 0; scale: 0.92; } to { opacity: 1; scale: 1; } }
+@keyframes heroSymSpin { to { rotate: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .hero__sym { animation: none; } }
 
 /* ===== Dark top-hero theme (only the hero section) ===== */
-.hero h1 { color: #fff; }
-.hero__sub { color: rgba(255, 255, 255, 0.72); }
-.hero .eyebrow { color: rgba(255, 255, 255, 0.72); }
-.hero .btn--primary { background: #fff; color: #111; box-shadow: none; }
-.hero .btn--primary:hover { background: #e7e7e7; }
-.hero .btn--light { background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, 0.5); }
-.hero .btn--light:hover { background: rgba(255, 255, 255, 0.12); }
+.hero h1 { color: var(--on-cyan); }
+.hero__sub { color: var(--on-cyan-muted); }
+.hero .eyebrow { color: var(--brand); }
+.hero .btn--primary { background: var(--brand); color: #fff; box-shadow: none; }
+.hero .btn--primary:hover { background: var(--brand-800); }
+.hero .btn--light { background: transparent; color: var(--brand); border: 1px solid rgba(39, 60, 145, 0.55); }
+.hero .btn--light:hover { background: rgba(39, 60, 145, 0.08); }
 
-/* Header over the dark hero: light at top, dark (frosted) when scrolled.
-   CTA flips white→black; nav links + logo go light only on desktop-at-top. */
-.flowbtn { background: #fff; color: #111; }
-.flowbtn__chip { background: #111; }
-/* dark island carries light text in both states; CTA flips white -> brand green */
-.site-head.is-scrolled .flowbtn { background: #0b6854; color: #fff; }
-.site-head.is-scrolled .flowbtn__chip { background: rgba(255, 255, 255, 0.22); }
-.site-head .logo span { transition: color 0.5s var(--ease); }
-@media (min-width: 1181px) {
-  .site-head .nav a { color: #fff; }
-  .site-head .nav a:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
-  .site-head .logo__txt span:first-child { color: #fff !important; }   /* keep "Infra" white; "Core" stays brand green */
-}
+/* Header CTA: Deep Blue ("banner blue") in every state — over the cyan hero at the
+   top and on the black island once scrolled; the chevron chip is a light tint of it. */
+.flowbtn { background: var(--brand); color: #fff; }
+.flowbtn__chip { background: rgba(255, 255, 255, 0.18); }
 @media (max-width: 1180px) {
-  .site-head .navtoggle span { background: #fff; }
+  .site-head .navtoggle span { background: var(--black); }
 }
 
 /* GradualBlur (React Bits) reimplemented in vanilla CSS — progressive blur behind
@@ -498,23 +455,21 @@ button { font: inherit; cursor: pointer; }
   border-radius: var(--r-3xl);
   position: sticky;
   overflow: hidden; isolation: isolate;
-  background: #161b17; color: #fff;
+  background: var(--cyan); color: var(--on-cyan);
 }
-/* green aurora glow rising from the bottom of each card (hero treatment) */
+/* Light Cyan banner card: white lift at the top-left, soft Deep Blue cast at the bottom */
 .fcard::before {
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background:
-    radial-gradient(72% 62% at 50% 110%, rgba(16, 132, 102, 0.55), transparent 72%),
-    radial-gradient(50% 52% at 18% 114%, rgba(11, 104, 84, 0.45), transparent 72%),
-    radial-gradient(50% 52% at 84% 114%, rgba(22, 150, 116, 0.40), transparent 72%),
-    radial-gradient(42% 40% at 62% 116%, rgba(46, 178, 138, 0.28), transparent 72%);
-  filter: blur(8px) saturate(1.05);
+    radial-gradient(72% 62% at 50% 112%, rgba(39, 60, 145, 0.16), transparent 72%),
+    radial-gradient(50% 52% at 18% -10%, rgba(255, 255, 255, 0.45), transparent 72%);
+  filter: blur(8px);
 }
 .fcard__body, .fcard__art { position: relative; z-index: 1; }
 /* SIGNATURE: 4 thin lines flowing like a river — a current runs DOWN each line (out of the
    top-right corner toward the bottom, left of centre) and flows off the bottom edge */
-.fcard { --flow-col: #34e89e; }
-.fcard--greenbg { --flow-col: #cdf4e2; }
+.fcard { --flow-col: var(--brand); --flow-glow: rgba(39, 60, 145, 0.45); }
+.fcard--alt { --flow-col: var(--cyan); --flow-glow: rgba(185, 224, 244, 0.6); }
 .fcard__flow { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 /* The flow waves are drawn for wide desktop cards; once the card narrows (tablet/phone)
    the wide shape squishes into vertical streaks, so hide them <=1024px. Wide desktop keeps them. */
@@ -522,21 +477,22 @@ button { font: inherit; cursor: pointer; }
 .fcard__flow .ff-base { stroke: var(--flow-col); stroke-width: 2; opacity: 0.2; }
 .fcard__flow .ff-flow {
   stroke: var(--flow-col); stroke-width: 2.2;
-  stroke-dasharray: 16 584;   /* one bright pulse per 6 card-lengths → lit ~1/6 of the cycle */
-  filter: drop-shadow(0 0 5px rgba(40, 200, 150, 0.55));
-  animation: ffFlow 12s linear infinite;
+  stroke-dasharray: 16 684;   /* one bright pulse per 7 card-lengths → lit ~1/7 of the cycle */
+  filter: drop-shadow(0 0 5px var(--flow-glow));
+  animation: ffFlow 14s linear infinite;
   animation-delay: calc(var(--card-d, 0s) + var(--d, 0s));
 }
-@keyframes ffFlow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -600; } }
-/* hand the bright pulse from card to card so ONE river flows 1 → 6, then repeats.
-   Negative delays start a loop AHEAD in time, so the order is 0,-10,-8,-6,-4,-2
-   (= phases 0,2,4,6,8,10s) to make the pulse cross card1 first, then 2, 3 … 6. */
+@keyframes ffFlow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -700; } }
+/* hand the bright pulse from card to card so ONE river flows 1 → 7, then repeats.
+   Negative delays start a loop AHEAD in time, so the order is 0,-12,-10,-8,-6,-4,-2
+   (= phases 0,2,4,6,8,10,12s) to make the pulse cross card1 first, then 2, 3 … 7. */
 .fcard:nth-child(1) .ff-flow { --card-d: 0s; }
-.fcard:nth-child(2) .ff-flow { --card-d: -10s; }
-.fcard:nth-child(3) .ff-flow { --card-d: -8s; }
-.fcard:nth-child(4) .ff-flow { --card-d: -6s; }
-.fcard:nth-child(5) .ff-flow { --card-d: -4s; }
-.fcard:nth-child(6) .ff-flow { --card-d: -2s; }
+.fcard:nth-child(2) .ff-flow { --card-d: -12s; }
+.fcard:nth-child(3) .ff-flow { --card-d: -10s; }
+.fcard:nth-child(4) .ff-flow { --card-d: -8s; }
+.fcard:nth-child(5) .ff-flow { --card-d: -6s; }
+.fcard:nth-child(6) .ff-flow { --card-d: -4s; }
+.fcard:nth-child(7) .ff-flow { --card-d: -2s; }
 @media (prefers-reduced-motion: reduce) {
   .fcard__flow .ff-flow { animation: none; stroke-dasharray: none; opacity: 0.4; }
 }
@@ -546,21 +502,25 @@ button { font: inherit; cursor: pointer; }
 .fcard:nth-child(4) { top: 140px; z-index: 4; }
 .fcard:nth-child(5) { top: 156px; z-index: 5; }
 .fcard:nth-child(6) { top: 172px; z-index: 6; }
+.fcard:nth-child(7) { top: 188px; z-index: 7; }
 /* all product cards share the dark hero treatment defined on .fcard */
-/* alt card: brand-green background with a smooth light-top + dark-bottom wash */
-.fcard--greenbg { background: #0b6854; }
-.fcard--greenbg::before {
+/* alt card: Deep Blue panel (the guideline's blue / cyan pairing) — soft cyan lift top-left, darker foot */
+.fcard--alt { background: var(--brand); color: #fff; }
+.fcard--alt::before {
   background:
-    radial-gradient(90% 80% at 16% -14%, rgba(146, 232, 197, 0.22), transparent 74%),
-    radial-gradient(135% 100% at 50% 130%, rgba(3, 40, 31, 0.78), rgba(4, 46, 36, 0.26) 50%, transparent 82%),
-    linear-gradient(0deg, rgba(3, 38, 30, 0.40), transparent 54%);
+    radial-gradient(90% 80% at 16% -14%, rgba(185, 224, 244, 0.18), transparent 74%),
+    radial-gradient(135% 100% at 50% 130%, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.10) 50%, transparent 82%),
+    radial-gradient(40% 40% at 84% 110%, rgba(185, 224, 244, 0.12), transparent 72%);
 }
-.fcard--greenbg .fcard__tag { color: #d2f0e3; }
+.fcard--alt .fcard__tag { color: var(--cyan); }
 .fcard__body { flex: 1 1 50%; }
-.fcard__tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--f-mono); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; color: #7fd3ba; }
+.fcard__tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--f-mono); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--brand); }
 .fcard__tag svg { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.fcard h3 { font-size: clamp(1.75rem, 3.8vw, 2.7rem); letter-spacing: -1px; line-height: 1.1; margin-top: 16px; color: #fff; }
-.fcard p { margin-top: 16px; color: rgba(255, 255, 255, 0.72); font-size: 1.08rem; max-width: 46ch; }
+.fcard h3 { font-size: clamp(1.75rem, 3.8vw, 2.7rem); letter-spacing: -1px; line-height: 1.1; margin-top: 16px; color: var(--on-cyan); }
+.fcard p { margin-top: 16px; color: var(--on-cyan-muted); font-size: 1.08rem; max-width: 46ch; }
+/* black alternate cards keep light text (declared after the generic rules so they win) */
+.fcard--alt h3 { color: #fff; }
+.fcard--alt p { color: rgba(255, 255, 255, 0.72); }
 .fcard__art {
   flex: 1 1 50%; align-self: stretch; min-height: 320px;
   border-radius: var(--r-2xl);
@@ -592,8 +552,8 @@ button { font: inherit; cursor: pointer; }
 
 .howsteps { position: relative; display: flex; flex-direction: column; gap: 18px; }
 .howsteps__rail, .howsteps__fill { position: absolute; left: 25px; width: 2px; border-radius: 2px; }
-.howsteps__rail { top: 26px; bottom: 26px; background: var(--n-200); }
-.howsteps__fill { top: 26px; height: 0; background: var(--n-950); transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
+.howsteps__rail { top: 26px; bottom: 26px; background: rgba(39, 60, 145, 0.14); }
+.howsteps__fill { top: 26px; height: 0; background: var(--brand); transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
 .hstep { position: relative; display: grid; grid-template-columns: 52px 1fr; gap: 20px; align-items: start; }
 .hstep__n {
   position: relative; z-index: 1;
@@ -605,7 +565,7 @@ button { font: inherit; cursor: pointer; }
   transition: color 0.25s var(--ease), background-color 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s var(--ease);
 }
 .hstep.is-in .hstep__n { opacity: 1; transform: scale(1); }
-.hstep.is-active .hstep__n { background: #161b17; color: #fff; border-color: #161b17; box-shadow: var(--shadow-soft); transform: scale(1.06); }
+.hstep.is-active .hstep__n { background: var(--brand); color: #fff; border-color: var(--brand); box-shadow: var(--shadow-soft); transform: scale(1.06); }
 .hstep__card {
   position: relative;
   min-height: 190px;
@@ -614,7 +574,7 @@ button { font: inherit; cursor: pointer; }
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background: linear-gradient(135deg, #0e7d61 0%, #0b6854 55%, #073f31 100%);
+  background: linear-gradient(135deg, var(--brand-600) 0%, var(--brand) 55%, var(--brand-800) 100%);
   border: 0;
   border-radius: var(--r-2xl);
   padding: 28px;
@@ -636,20 +596,20 @@ button { font: inherit; cursor: pointer; }
   background: var(--step-bg) center / cover no-repeat;
   transform: scale(1.04);
   filter: saturate(0.9) contrast(1.05);
-  opacity: 0.16;            /* faint photo over the green card */
+  opacity: 0.16;            /* faint photo over the Deep Blue card */
 }
 .hstep__card::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(90deg, rgba(4, 38, 30, 0.55) 0%, rgba(11, 104, 84, 0.06) 55%, transparent 100%);
+  background: linear-gradient(90deg, rgba(0, 0, 48, 0.55) 0%, rgba(39, 60, 145, 0.06) 55%, transparent 100%);
 }
 .hstep.is-active .hstep__card {
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0);
-  box-shadow: 0 18px 38px rgba(9, 20, 16, 0.24);
+  box-shadow: 0 18px 38px rgba(0, 0, 60, 0.28);
 }
 /* reveal ALL three cards as soon as the section enters view (small cascade),
    independent of the rail-fill progress — so they're already there when you reach it */
@@ -657,7 +617,7 @@ button { font: inherit; cursor: pointer; }
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0);
-  box-shadow: 0 18px 38px rgba(9, 20, 16, 0.24);
+  box-shadow: 0 18px 38px rgba(0, 0, 60, 0.28);
 }
 .hstep.is-in .hstep__ico { transform: scale(1); }
 .hstep__card { --step-bg: url("assets/services-lab.webp"); }   /* same lab photo on all three */
@@ -670,7 +630,7 @@ button { font: inherit; cursor: pointer; }
   border: 0; background: none; box-shadow: none;
   -webkit-backdrop-filter: none; backdrop-filter: none;
   opacity: 1; color: #fff; z-index: 0;   /* white circle-less glyph, bleeding from bottom-right */
-  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.30)) drop-shadow(0 0 22px rgba(150, 245, 200, 0.40));
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.30)) drop-shadow(0 0 22px rgba(185, 224, 244, 0.45));
   transform: scale(0.9);
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -713,17 +673,17 @@ button { font: inherit; cursor: pointer; }
    across the full width with faint connector rails, and a
    <pixel-canvas> cover that pixelates in on hover of the section.
    ============================================================ */
-.intg { position: relative; overflow: hidden; isolation: isolate; background: var(--n-950); }  /* clip the pixel cover to the rounded panel */
-/* Green aurora glow rising from the bottom (same language as the hero) */
+.intg { position: relative; overflow: hidden; isolation: isolate; background: var(--brand); }  /* clip the pixel cover to the rounded panel */
+/* cyan glow rising from the bottom of the Deep Blue panel, darker at the top edge */
 .intg::before {
   content: "";
   position: absolute; inset: -12%; z-index: 0; pointer-events: none;
   transform-origin: 50% 100%;
   background:
-    radial-gradient(60% 50% at 50% 108%, rgba(52, 232, 158, 0.34), transparent 72%),
-    radial-gradient(46% 42% at 22% 104%, rgba(28, 170, 128, 0.26), transparent 72%),
-    radial-gradient(46% 42% at 80% 104%, rgba(80, 205, 230, 0.20), transparent 72%),
-    radial-gradient(40% 38% at 62% 104%, rgba(150, 245, 180, 0.18), transparent 72%);
+    radial-gradient(60% 50% at 50% 108%, rgba(185, 224, 244, 0.30), transparent 72%),
+    radial-gradient(46% 42% at 22% 104%, rgba(59, 82, 176, 0.85), transparent 72%),
+    radial-gradient(46% 42% at 80% 104%, rgba(59, 82, 176, 0.85), transparent 72%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0) 45%);
   filter: blur(16px) saturate(1.05);
   /* static — dropped the infinite scale "breath" that re-rasterized this 16px blur each frame */
 }
@@ -746,7 +706,7 @@ button { font: inherit; cursor: pointer; }
   mask: linear-gradient(90deg, transparent 0, #000 1.5%, #000 98.5%, transparent 100%);
 }
 .intg__wires path {
-  fill: none; stroke: rgba(255, 255, 255, 0.28); stroke-width: 1;
+  fill: none; stroke: rgba(185, 224, 244, 0.42); stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
 
@@ -775,23 +735,23 @@ button { font: inherit; cursor: pointer; }
 .intg__nodeico i { font-size: 24px; line-height: 1; }
 .intg__nodelabel {
   font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.05em;
-  text-transform: uppercase; color: var(--n-400);
+  text-transform: uppercase; color: rgba(255, 255, 255, 0.72);
   white-space: nowrap;
 }
-/* All node icons share one colour — the brand green of the navbar "Request a quote" button */
-.intg__nodeico { background: #0b6854; color: #fff; }
+/* All node icons share one colour — Light Cyan discs with black glyphs */
+.intg__nodeico { background: var(--cyan); color: var(--black); }
 
 /* ---- Centre content (light text on black) ---- */
 .intg__center { position: relative; z-index: 3; max-width: 30rem; margin: 0 auto; text-align: center; }
-.intg__eyebrow { color: #6eb39f; }
+.intg__eyebrow { color: var(--cyan); }
 .intg__eyebrow::before { display: none; }     /* replace the dot with the hub glyph */
 .intg__hub { font-size: 13px; line-height: 1; }
 .intg__center h2 { color: #ffffff; font-size: clamp(1.7rem, 3.4vw, 2.6rem); letter-spacing: -1px; line-height: 1.12; margin-top: 16px; }
-.intg__center p { margin-top: 16px; color: var(--n-400); font-size: 1.05rem; line-height: 1.65; }
+.intg__center p { margin-top: 16px; color: rgba(255, 255, 255, 0.78); font-size: 1.05rem; line-height: 1.65; }
 .intg__cta { margin-top: 28px; }
 /* invert the primary CTA to a light button so it reads on black */
-.intg .btn--primary { background: #ffffff; color: var(--n-950); }
-.intg .btn--primary:hover { background: var(--n-200); }
+.intg .btn--primary { background: #ffffff; color: var(--brand); }
+.intg .btn--primary:hover { background: var(--cyan-100); }
 .intg__cta svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s var(--ease); }
 .intg__cta:hover svg { transform: translateX(4px); }
 
@@ -885,7 +845,7 @@ button { font: inherit; cursor: pointer; }
   position: relative; overflow: hidden;
   border-radius: var(--r-2xl);
   background: var(--white);
-  border: 1px solid var(--n-200);
+  border: 1px solid rgba(39, 60, 145, 0.08);
   padding: 26px;
   display: flex; flex-direction: column;
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
@@ -899,7 +859,7 @@ button { font: inherit; cursor: pointer; }
 .bento__viz { position: relative; flex: 1 1 auto; margin-top: 14px; }
 
 /* placement (12-col, 2-row) */
-.bento__intro    { grid-column: 1 / 5;   grid-row: 1 / 3; padding: 0; justify-content: space-between; }
+.bento__intro    { grid-column: 1 / 5;   grid-row: 1 / 3; padding: 0; justify-content: space-between; background: var(--brand); }
 .bento__warranty { grid-column: 5 / 8;   grid-row: 1; }
 .bento__delivery { grid-column: 8 / 13;  grid-row: 1; }
 .bento__support  { grid-column: 5 / 10;  grid-row: 2; }
@@ -918,22 +878,22 @@ button { font: inherit; cursor: pointer; }
 .browser__screen { margin-top: 8px; flex: 1; min-height: 80px; border-radius: 8px; background: #eceef2; display: grid; place-items: center; }
 .browser__screen svg { width: 26px; height: 26px; fill: none; stroke: #b9bdc6; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .bento__introtext { padding: 22px 26px 26px; }
-.bento__eyebrow { color: #6eb39f; }
+.bento__eyebrow { color: var(--cyan); }
 .bento__intro h2 { color: #fff; font-size: clamp(1.35rem, 1.6vw, 1.7rem); letter-spacing: -0.5px; line-height: 1.15; margin-top: 12px; }
-.bento__intro p { color: var(--n-400); margin-top: 10px; font-size: 0.95rem; line-height: 1.6; }
+.bento__intro p { color: rgba(255, 255, 255, 0.74); margin-top: 10px; font-size: 0.95rem; line-height: 1.6; }
 .bento__pill { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; background: #fff; color: #0a0a0a; border-radius: var(--r-lg); padding: 11px 16px; font-family: var(--f-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.02em; transition: background-color var(--t-btn) var(--ease); }
 .bento__pill:hover { background: var(--n-200); }
-.bento__pillmark { width: 18px; height: 18px; border-radius: 5px; flex: none; background: linear-gradient(135deg, #f5c542, #e89b1a); }
+.bento__pillmark { width: 18px; height: 18px; border-radius: 5px; flex: none; background: linear-gradient(135deg, var(--cyan), var(--brand)); }
 
 /* ---- 2 · warranty (shield seal + status chip) ---- */
 .seal { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
 .seal__emblem { position: relative; width: 120px; height: 120px; display: grid; place-items: center; }
-.seal__ring { position: absolute; inset: 0; border-radius: 50%; border: 2px dashed rgba(11,104,84,0.30); animation: spin 16s linear infinite; }
-.seal__ring--2 { inset: 16px; border-style: solid; border-color: rgba(11,104,84,0.12); animation: none; }
-.seal__badge { width: 66px; height: 66px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 50% 32%, #0f9b6e, #0b6854); box-shadow: 0 10px 24px rgba(11,104,84,0.32); }
+.seal__ring { position: absolute; inset: 0; border-radius: 50%; border: 2px dashed rgba(0,0,123,0.30); animation: spin 16s linear infinite; }
+.seal__ring--2 { inset: 16px; border-style: solid; border-color: rgba(0,0,123,0.12); animation: none; }
+.seal__badge { width: 66px; height: 66px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 50% 32%, var(--brand-600), var(--brand)); box-shadow: 0 10px 24px rgba(0,0,123,0.32); }
 .seal__badge svg { width: 30px; height: 30px; fill: none; stroke: #fff; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .seal__chip { display: flex; align-items: center; gap: 10px; width: 100%; background: #fff; border: 1px solid var(--n-200); border-radius: 12px; box-shadow: 0 10px 24px rgba(20,30,40,0.08); padding: 10px 13px; }
-.seal__dot { width: 9px; height: 9px; border-radius: 50%; background: #19b886; box-shadow: 0 0 0 4px rgba(25,184,134,0.15); flex: none; }
+.seal__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px rgba(143,233,250,0.6); flex: none; }
 .seal__t { font-weight: 600; color: var(--ink); font-size: 0.9rem; }
 .seal__s { color: var(--n-500); font-size: 0.76rem; }
 
@@ -952,33 +912,32 @@ button { font: inherit; cursor: pointer; }
 .bento__delivery-head h3 { color: #fff; }
 .bento__delivery-head .bento__desc { color: rgba(255,255,255,0.82); }
 /* moving truck */
-.route__truckmk { width: 27px; height: 27px; border-radius: 50%; display: grid; place-items: center; background: #0a0a0a; border: 1.5px solid #34e89e; box-shadow: 0 4px 12px rgba(0,0,0,0.6); }
-.route__truckmk i { font-size: 12px; color: #34e89e; }
+.route__truckmk { width: 27px; height: 27px; border-radius: 50%; display: grid; place-items: center; background: #0a0a0a; border: 1.5px solid var(--cyan); box-shadow: 0 4px 12px rgba(0,0,0,0.6); }
+.route__truckmk i { font-size: 12px; color: var(--cyan); }
 /* warehouse (A) + delivery-location (B) markers */
 .mk { width: 29px; height: 29px; border-radius: 50%; display: grid; place-items: center; border: 2px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
 .mk i { font-size: 13px; color: #fff; }
-.mk--wh { background: #19b886; }
-.mk--dest { background: #ef4444; }
+.mk--wh { background: var(--brand); }
+.mk--dest { background: var(--cyan); }
+.mk--dest i { color: #0a0a0a; }
 
 /* ---- 4 · support (chat thread) ---- */
 .chat { display: flex; flex-direction: column; gap: 12px; justify-content: center; }
 .bubble { max-width: 82%; padding: 11px 14px; font-size: 0.88rem; line-height: 1.45; border-radius: 16px; }
 .bubble--in { align-self: flex-start; background: var(--n-100); color: var(--n-700); border-bottom-left-radius: 5px; }
-.bubble--out { align-self: flex-end; display: flex; align-items: flex-start; gap: 9px; background: linear-gradient(135deg, #0f9b6e, #0b6854); color: #fff; border-bottom-right-radius: 5px; }
+.bubble--out { align-self: flex-end; display: flex; align-items: flex-start; gap: 9px; background: linear-gradient(135deg, var(--brand-600), var(--brand)); color: #fff; border-bottom-right-radius: 5px; }
 .bubble__av { width: 24px; height: 24px; flex: none; display: grid; place-items: center; }
-.bubble__av svg { width: 23px; height: 23px; }
-.bubble__av svg path { stroke: #fff; }
-.bubble__av svg circle { fill: #fff; }
+.bubble__av svg { width: 22px; height: 22px; color: #fff; }   /* brand symbol via the sprite */
 .chat__status { display: flex; align-items: center; gap: 8px; margin-top: 2px; color: var(--n-500); font-size: 0.78rem; }
-.chat__dot { width: 8px; height: 8px; border-radius: 50%; background: #19b886; box-shadow: 0 0 0 4px rgba(25,184,134,0.15); }
+.chat__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px rgba(143,233,250,0.6); }
 
 /* ---- 5 · infrastructure (server stack + backup sync) ---- */
 .stack { display: flex; flex-direction: column; gap: 10px; justify-content: center; }
 .srv { display: flex; align-items: center; gap: 12px; background: var(--n-50); border: 1px solid var(--n-200); border-radius: 10px; padding: 14px 16px; }
-.srv__led { width: 9px; height: 9px; border-radius: 50%; flex: none; background: #19b886; box-shadow: 0 0 0 3px rgba(25,184,134,0.18); }
+.srv__led { width: 9px; height: 9px; border-radius: 50%; flex: none; background: var(--brand); box-shadow: 0 0 0 3px rgba(143,233,250,0.6); }
 .srv__led--amber { background: #f5a623; box-shadow: 0 0 0 3px rgba(245,166,35,0.18); }
 .srv__bar { flex: 1; height: 8px; border-radius: 4px; background: var(--n-200); }
-.stack__sync { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; margin-top: 2px; color: #0b6854; font-size: 0.8rem; font-weight: 600; }
+.stack__sync { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; margin-top: 2px; color: var(--brand); font-size: 0.8rem; font-weight: 600; }
 .stack__sync svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; animation: spin 5s linear infinite; }
 
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -1026,25 +985,25 @@ button { font: inherit; cursor: pointer; }
 
 /* left · info */
 .ccard__info { padding: clamp(22px, 3vw, 36px); }
-.ccard__path { color: #0b6854; }
+.ccard__path { color: var(--brand); }
 .ccard__info h2 { font-size: clamp(1.45rem, 2.6vw, 2.05rem); letter-spacing: -0.5px; line-height: 1.12; margin-top: 12px; }
 .ccard__lead { color: var(--muted); margin-top: 12px; font-size: 0.96rem; line-height: 1.55; max-width: 34ch; }
 .ccard__contacts { margin-top: 22px; }
 .ccard__contacts li { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); font-size: 0.92rem; }
 .ccard__contacts li:first-child { border-top: 0; }
-.ccard__contacts a:hover { color: #0b6854; }
-.ccard__ico { flex: none; display: grid; place-items: center; color: #0b6854; }
+.ccard__contacts a:hover { color: var(--brand); }
+.ccard__ico { flex: none; display: grid; place-items: center; color: var(--brand); }
 .ccard__ico svg { width: 18px; height: 18px; fill: currentColor; }
 .ccard__social { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
-.ccard__sbtn { display: inline-flex; align-items: center; gap: 10px; padding: 11px 16px; border: 1px solid var(--n-900); border-radius: var(--r-lg); font-weight: 600; font-size: 0.9rem; transition: background-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease); }
-.ccard__sbtn:hover { background: var(--n-900); color: #fff; }
+.ccard__sbtn { display: inline-flex; align-items: center; gap: 10px; padding: 11px 16px; border: 1px solid rgba(39, 60, 145, 0.35); border-radius: var(--r-lg); font-weight: 600; font-size: 0.9rem; transition: background-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease); }
+.ccard__sbtn:hover { background: var(--brand); color: #fff; border-color: var(--brand); }
 .ccard__sbtn svg { width: 18px; height: 18px; flex: none; }
 .ccard__badges { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: 22px; }
 .ccard__badges li { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--n-700); }
-.ccard__badges svg { width: 15px; height: 15px; flex: none; fill: #0b6854; }
+.ccard__badges svg { width: 15px; height: 15px; flex: none; fill: var(--brand); }
 
 /* right · form */
-.ccard__formwrap { position: relative; background: var(--n-50); border-left: 1px solid var(--line); padding: clamp(22px, 3vw, 34px); display: flex; align-items: center; }
+.ccard__formwrap { position: relative; background: var(--surface); border-left: 1px solid var(--line); padding: clamp(22px, 3vw, 34px); display: flex; align-items: center; }
 .qform { width: 100%; }
 .qform__row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
 .qfield { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
@@ -1057,7 +1016,7 @@ button { font: inherit; cursor: pointer; }
   transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
 }
 .qfield textarea { resize: vertical; min-height: 84px; }
-.qfield input:focus, .qfield select:focus, .qfield textarea:focus { outline: none; border-color: #0b6854; box-shadow: 0 0 0 3px rgba(11, 104, 84, 0.15); }
+.qfield input:focus, .qfield select:focus, .qfield textarea:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(39, 60, 145, 0.15); }
 .qfield input::placeholder, .qfield textarea::placeholder { color: var(--n-400); }
 /* custom animated category dropdown (listbox) */
 .ddm { position: relative; }
@@ -1068,7 +1027,7 @@ button { font: inherit; cursor: pointer; }
   transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
 }
 .ddm__trigger:hover { border-color: var(--n-400); }
-.ddm.is-open .ddm__trigger, .ddm__trigger:focus-visible { outline: none; border-color: #0b6854; box-shadow: 0 0 0 3px rgba(11, 104, 84, 0.15); }
+.ddm.is-open .ddm__trigger, .ddm__trigger:focus-visible { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(39, 60, 145, 0.15); }
 .ddm__value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ddm__value.is-placeholder { color: var(--n-400); }
 .ddm__chev { width: 16px; height: 16px; flex: none; fill: none; stroke: var(--n-500); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform var(--t-fast) var(--ease); }
@@ -1087,18 +1046,18 @@ button { font: inherit; cursor: pointer; }
 }
 .ddm__item { padding: 8px 10px; border-radius: var(--r-md); font-size: 0.9rem; color: var(--n-700); cursor: pointer; }
 .ddm__item:hover { background: var(--n-100); color: var(--ink); }
-.ddm__item[aria-selected="true"] { font-weight: 600; color: #0b6854; }
+.ddm__item[aria-selected="true"] { font-weight: 600; color: var(--brand); }
 .ddm__other { margin-top: 8px; width: 100%; padding: 10px 12px; font: inherit; font-size: 0.92rem; color: var(--ink); background: #fff; border: 1px solid var(--n-300); border-radius: var(--r-lg); transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); }
 .ddm__other[hidden] { display: none; }
 .ddm__other::placeholder { color: var(--n-400); }
-.ddm__other:focus { outline: none; border-color: #0b6854; box-shadow: 0 0 0 3px rgba(11, 104, 84, 0.15); }
+.ddm__other:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(39, 60, 145, 0.15); }
 @media (prefers-reduced-motion: reduce) { .ddm__menu { transition: visibility 0s linear 0.16s; } }
 .qconsent { display: flex; align-items: flex-start; gap: 9px; margin: 4px 0 16px; font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
-.qconsent input { margin-top: 2px; width: 16px; height: 16px; accent-color: #0b6854; flex: none; }
-.qform__submit { width: 100%; min-height: 48px; border: 0; border-radius: var(--r-lg); background: #0b6854; color: #fff; font-family: var(--f-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; cursor: pointer; transition: background-color var(--t-btn) var(--ease); }
-.qform__submit:hover { background: #0d7a62; }
+.qconsent input { margin-top: 2px; width: 16px; height: 16px; accent-color: var(--brand); flex: none; }
+.qform__submit { width: 100%; min-height: 48px; border: 0; border-radius: var(--r-lg); background: var(--brand); color: #fff; font-family: var(--f-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; cursor: pointer; transition: background-color var(--t-btn) var(--ease); }
+.qform__submit:hover { background: var(--brand-800); }
 .qform__submit:disabled { opacity: 0.75; cursor: default; }
-.qform__done { margin-top: 12px; text-align: center; color: #0b6854; font-weight: 600; font-size: 0.9rem; }
+.qform__done { margin-top: 12px; text-align: center; color: var(--brand); font-weight: 600; font-size: 0.9rem; }
 
 @media (max-width: 760px) {
   .ccard { grid-template-columns: 1fr; }
@@ -1304,9 +1263,9 @@ button { font: inherit; cursor: pointer; }
   text-align: center;
   padding: clamp(48px, 7vw, 90px) 20px;
   background:
-    radial-gradient(700px 340px at 30% 0%, var(--soft-purple), transparent 60%),
-    radial-gradient(680px 320px at 80% 100%, var(--soft-green), transparent 60%),
-    radial-gradient(500px 300px at 60% 50%, var(--soft-pink), transparent 70%),
+    radial-gradient(700px 340px at 30% 0%, var(--brand-100), transparent 60%),
+    radial-gradient(680px 320px at 80% 100%, var(--cyan-100), transparent 60%),
+    radial-gradient(500px 300px at 60% 50%, rgba(185, 224, 244, 0.18), transparent 70%),
     #ffffff;
 }
 .foot__cta h2 { color: var(--n-900); letter-spacing: -2px; font-size: clamp(1.9rem, 4vw, 3.25rem); max-width: 18ch; margin: 16px auto 0; }
@@ -1320,23 +1279,8 @@ button { font: inherit; cursor: pointer; }
 .foot__cols h5 { color: #fff; font-size: 0.85rem; font-family: var(--f-mono); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 14px; font-weight: 400; }
 .foot__cols a { display: block; padding: 6px 0; color: #a3a3a3; font-size: 0.92rem; transition: color var(--t-fast) var(--ease); }
 .foot__cols a:hover { color: #fff; }
-.foot .logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0;
-  font-size: 1rem;
-  line-height: 1;
-  color: #fff;
-}
-.foot .logo__mark {
-  height: 26px;
-}
-.foot .logo__txt {
-  display: inline-flex;
-  align-items: baseline;
-  line-height: 1;
-}
+.foot .logo { display: inline-flex; align-items: center; padding: 0; color: #fff; }
+.foot .logo__svg { height: 26px; width: 106px; }
 .foot__tag { color: #a3a3a3; max-width: 34ch; margin-top: 14px; font-size: 0.92rem; }
 .foot__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid rgba(255,255,255,0.1); margin: 0 clamp(20px,4vw,48px); padding: 18px 0; color: #737373; font-size: 0.82rem; }
 
@@ -1362,15 +1306,12 @@ button { font: inherit; cursor: pointer; }
   .hero__cta { flex-wrap: nowrap; justify-content: center; gap: 10px; margin-top: 24px; }
   .hero__cta .btn { flex: 1 1 0; min-width: 0; min-height: 42px; padding: 0 10px; font-size: 0.58rem; white-space: nowrap; }
   .hero__visual { display: none; }
-  /* phone: use the upright render (no rotation) in its own band at the BOTTOM,
-     below the CTAs (no overlap), full opacity, cut off by the bottom edge */
-  .hero__art { display: none; }
-  /* phone: render sits in its own band at the BOTTOM of the hero (below the CTAs), upright */
-  .hero__artm {
-    display: block; position: absolute;
-    bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 128%; height: auto; max-width: none; opacity: 1;
-    z-index: 0; pointer-events: none;
+  /* phone: the symbol sits in its own band at the BOTTOM of the hero (below the CTAs),
+     centred, fixed size, cut off by the bottom edge */
+  .hero__sym {
+    left: 50%; bottom: -160px;
+    height: 400px; width: auto;
+    translate: -50% 0;
   }
   .foot__cols { grid-template-columns: 1fr 1fr; }
 }
@@ -1395,6 +1336,7 @@ button { font: inherit; cursor: pointer; }
   /* nav (which carried margin-left:auto) is hidden on mobile, so pin the CTA to the right here */
   .head__actions { margin-left: auto; }
   .logo { margin-left: 6px; }   /* tiny nudge right on phone */
+  .logo__svg { height: 24px; width: 98px; }
   /* phone: shrink the step glyphs ~2x, lift the text, and keep text clear of the corner icon */
   .hstep__ico .luc { width: 52px; height: 52px; }
   .hstep__ico { right: 16px; bottom: 16px; }
@@ -1408,7 +1350,7 @@ button { font: inherit; cursor: pointer; }
     z-index: -1;
     border-radius: var(--r-xl);
     pointer-events: none;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.62) 62%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(180deg, rgba(185, 224, 244, 0.96) 0%, rgba(185, 224, 244, 0.75) 62%, rgba(185, 224, 244, 0) 100%);
   }
   .site-head__bar {
     min-height: 48px;
@@ -1419,8 +1361,8 @@ button { font: inherit; cursor: pointer; }
   .site-head.is-scrolled .site-head__bar { padding: 0 8px; }
   /* phone: sticky header controls sit over the clipped hero backdrop */
   .site-head.is-scrolled .site-head__bar { background: transparent; box-shadow: none; }
-  .site-head.is-scrolled .flowbtn { background: #fff; color: #111; }
-  .site-head.is-scrolled .flowbtn__chip { background: #111; }
+  /* phone: the bar stays over the cyan hero band in both states, so the logo stays black */
+  .site-head.is-scrolled .logo { color: var(--black); }
   .intg__stage {
     gap: 26px;
   }
@@ -1486,16 +1428,22 @@ button { font: inherit; cursor: pointer; }
   .fcard:nth-child(4) { top: 132px; }
   .fcard:nth-child(5) { top: 148px; }
   .fcard:nth-child(6) { top: 164px; }
+  .fcard:nth-child(7) { top: 180px; }
   .fcard:nth-child(3) { --m-art-w: 96%; --m-art-y: 58%; }
   .fcard:nth-child(4) { --m-art-w: 82%; --m-art-y: 58%; }
   .fcard:nth-child(5) { --m-art-w: 78%; --m-art-y: 58%; }
   .fcard:nth-child(6) { --m-art-w: 78%; --m-art-y: 58%; }
+  .fcard:nth-child(7) { --m-art-w: 80%; --m-art-y: 58%; }
   .fcard::before {
     filter: none;
     background:
-      radial-gradient(82% 58% at 58% 108%, rgba(16, 132, 102, 0.42), transparent 72%),
-      radial-gradient(62% 54% at 18% 8%, rgba(115, 209, 174, 0.18), transparent 70%),
-      linear-gradient(90deg, rgba(76, 142, 116, 0.22), transparent 52%);
+      radial-gradient(82% 58% at 58% 108%, rgba(39, 60, 145, 0.14), transparent 72%),
+      radial-gradient(62% 54% at 18% 8%, rgba(255, 255, 255, 0.35), transparent 70%);
+  }
+  .fcard--alt::before {
+    background:
+      radial-gradient(82% 58% at 58% 108%, rgba(0, 0, 0, 0.30), transparent 72%),
+      radial-gradient(62% 54% at 18% 8%, rgba(185, 224, 244, 0.16), transparent 70%);
   }
   .fcard__flow {
     inset: auto;
@@ -1517,7 +1465,7 @@ button { font: inherit; cursor: pointer; }
   .fcard__flow .ff-flow {
     stroke-width: 1.85;
     opacity: 0.62;
-    filter: drop-shadow(0 0 4px rgba(40, 200, 150, 0.42));
+    filter: drop-shadow(0 0 4px var(--flow-glow));
   }
   .fcard__body {
     width: 100%;
@@ -1602,7 +1550,7 @@ button { font: inherit; cursor: pointer; }
 html[data-lang="ka"] .langsw:hover { background: #111; color: #fff; border-color: #fff; }
 html[data-lang="ka"] .langsw:hover .langsw__globe { color: #fff; }
 .langsw:active { transform: translateY(0) scale(0.96); }
-.langsw__globe { width: 22px; height: 22px; color: #34e89e; flex: none; transition: color 0.4s ease; }
+.langsw__globe { width: 22px; height: 22px; color: var(--cyan); flex: none; transition: color 0.4s ease; }
 /* idle: the meridian sweeps side-to-side so the globe looks like it's spinning */
 .langsw__merid { transform-box: fill-box; transform-origin: center; animation: globeMerid 4.5s ease-in-out infinite; }
 @keyframes globeMerid { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(-1); } }
@@ -1640,7 +1588,7 @@ html[data-lang="ka"] .langsw:hover .langsw__globe { color: #fff; }
 .btn--flow:active { transform: scale(0.96); }
 .btn--flow__circle {
   position: absolute; top: 50%; left: 50%; width: 16px; height: 16px;
-  transform: translate(-50%, -50%); border-radius: 50%; background: #111111; opacity: 0; z-index: -1;
+  transform: translate(-50%, -50%); border-radius: 50%; background: var(--brand); opacity: 0; z-index: -1;
   transition: width 0.8s cubic-bezier(0.19, 1, 0.22, 1), height 0.8s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .btn--flow:hover .btn--flow__circle { width: 280px; height: 280px; opacity: 1; }
@@ -1652,19 +1600,10 @@ html[data-lang="ka"] .langsw:hover .langsw__globe { color: #fff; }
 .btn--flow__lbl { position: relative; z-index: 1; transform: translateX(-10px); transition: transform 0.8s ease; }
 .btn--flow:hover .btn--flow__lbl { transform: translateX(10px); }
 @media (prefers-reduced-motion: reduce) { .btn--flow, .btn--flow * { transition: none !important; } }
-/* on the dark hero: white outline -> fills white, glyphs/text turn dark */
-.hero .btn--flow { border-color: rgba(255, 255, 255, 0.5); color: #fff; }
-.hero .btn--flow .btn--flow__arr { stroke: #fff; }
-.hero .btn--flow .btn--flow__circle { background: #fff; }
-.hero .btn--flow:hover { color: #0a0a0a; }
-.hero .btn--flow:hover .btn--flow__arr--l,
-.hero .btn--flow:hover .btn--flow__arr--r { stroke: #0a0a0a; }
 
 /* ============================================================
-   Per-request: these headings/labels use the TEXT font (Mersad)
-   instead of the display font (Eurostile):
-   Services (bento) section + How-we-work step titles.
-   (Hero h1, the "How we work" section h2, and ctabox h3 stay Eurostile.)
+   These headings/labels use the text face rather than the mono
+   label face (Services bento + How-we-work step titles).
    Placed last so .bento__eyebrow beats the .eyebrow mono rule.
    ============================================================ */
 .bento__introtext h2,
