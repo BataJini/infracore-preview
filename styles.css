@@ -524,6 +524,11 @@ button { font: inherit; cursor: pointer; }
 
 /* the whole card opens the quote form; the CTA link is the visible / focusable control */
 .fcard[data-quote], .fcard[data-wa] { cursor: pointer; }
+.fcard[data-quote]:focus-visible { outline: 3px solid var(--brand); outline-offset: -3px; }
+.fcard--alt[data-quote]:focus-visible { outline-color: #fff; }
+/* no button on the quote cards: the title underlines on hover as the "this is clickable" cue */
+.fcard[data-quote] h3 { text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 2px; text-underline-offset: 6px; transition: text-decoration-color 0.25s var(--ease); }
+.fcard[data-quote]:hover h3 { text-decoration-color: currentColor; }
 .fcard__cta {
   display: inline-flex; align-items: center; gap: 10px; margin-top: 24px;
   padding: 10px 14px; border-radius: var(--r-lg);
