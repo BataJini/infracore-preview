@@ -523,7 +523,7 @@ button { font: inherit; cursor: pointer; }
 .fcard--alt p { color: rgba(255, 255, 255, 0.72); }
 
 /* the whole card opens the quote form; the CTA link is the visible / focusable control */
-.fcard[data-quote] { cursor: pointer; }
+.fcard[data-quote], .fcard[data-wa] { cursor: pointer; }
 .fcard__cta {
   display: inline-flex; align-items: center; gap: 10px; margin-top: 24px;
   padding: 10px 14px; border-radius: var(--r-lg);
@@ -537,6 +537,9 @@ button { font: inherit; cursor: pointer; }
 .fcard__cta:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 .fcard--alt .fcard__cta { color: #fff; border-color: rgba(255, 255, 255, 0.45); }
 .fcard--alt:hover .fcard__cta, .fcard--alt .fcard__cta:focus-visible { background: #fff; color: var(--brand); border-color: #fff; }
+/* WhatsApp variant (gaming card): filled glyph, no arrow slide */
+.fcard__cta--wa svg { width: 17px; height: 17px; fill: currentColor; stroke: none; }
+.fcard:hover .fcard__cta--wa svg { transform: none; }
 .fcard__art {
   flex: 1 1 50%; align-self: stretch; min-height: 320px;
   border-radius: var(--r-2xl);
