@@ -521,6 +521,22 @@ button { font: inherit; cursor: pointer; }
 /* black alternate cards keep light text (declared after the generic rules so they win) */
 .fcard--alt h3 { color: #fff; }
 .fcard--alt p { color: rgba(255, 255, 255, 0.72); }
+
+/* the whole card opens the quote form; the CTA link is the visible / focusable control */
+.fcard[data-quote] { cursor: pointer; }
+.fcard__cta {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 24px;
+  padding: 10px 14px; border-radius: var(--r-lg);
+  font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--brand); border: 1px solid rgba(39, 60, 145, 0.35); text-decoration: none;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.fcard__cta svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.25s var(--ease); }
+.fcard:hover .fcard__cta, .fcard__cta:focus-visible { background: var(--brand); color: #fff; border-color: var(--brand); }
+.fcard:hover .fcard__cta svg { transform: translateX(3px); }
+.fcard__cta:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.fcard--alt .fcard__cta { color: #fff; border-color: rgba(255, 255, 255, 0.45); }
+.fcard--alt:hover .fcard__cta, .fcard--alt .fcard__cta:focus-visible { background: #fff; color: var(--brand); border-color: #fff; }
 .fcard__art {
   flex: 1 1 50%; align-self: stretch; min-height: 320px;
   border-radius: var(--r-2xl);
